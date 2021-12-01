@@ -1,6 +1,6 @@
 # MicroMamba.jl
 
-A Julia package providing access to a [`MicroMamba`](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html) executable.
+A Julia interface to the [`MicroMamba`](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html) package manager.
 
 ## Installation
 
@@ -15,8 +15,8 @@ The API consists of the following three functions:
 - `version()` returns the version of the above executable.
 - `available()` returns true if MicroMamba is available on this system.
 
-In all three cases, MicroMamba will be downloaded and installed locally (to a package-
-specific directory) if required.
+In all three cases, MicroMamba will be downloaded and installed (local to the package)
+if required.
 
 Note that `executable()` and `version()` can throw errors, such as if MicroMamba is not
 supported on this platform. The `available()` function exists to check for this: if it
