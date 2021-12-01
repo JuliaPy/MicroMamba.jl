@@ -1,0 +1,12 @@
+name = "MicroMamba"
+uuid = "0b3b1443-0f03-428d-bdfb-f27f9c1191ea"
+authors = ["Christopher Rowley <github.com/cjdoris>"]
+version = "0.1.0"
+
+[deps]
+CodecBzip2 = "523fee87-0ab8-5b00-afb7-3ecf72e48cfd"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+Tar = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
+
+[compat]
+CodecBzip2 = "0.7"
