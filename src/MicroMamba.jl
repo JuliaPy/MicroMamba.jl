@@ -70,7 +70,7 @@ function executable()
         else
             # Use version installed in the package dir
             exename = Sys.iswindows() ? "micromamba.exe" : "micromamba"
-            exe = joinpath(dirname(@__DIR__), exename)
+            exe = joinpath(DEPOT_PATH[1], "micromamba", exename)
             if _version(exe) < MIN_VERSION
                 # If doesn't exist or too old, download and install
                 mktempdir() do dir
@@ -83,6 +83,7 @@ function executable()
                         Tar.extract(Bzip2DecompressorStream(io), odir)
                     end
                     iexe = Sys.iswindows() ? joinpath(odir, "Library", "bin", exename) : joinpath(odir, "bin", exename)
+                    mkpath(dirname(exe))
                     cp(iexe, exe, force=true)
                 end
             end
@@ -152,5 +153,21 @@ function available()
     end
     STATE.available
 end
+
+"""
+    cmd([args])
+
+Construct a command which calls MicroMamba, optionally with additional arguments.
+
+Unless the environment variable `MAMBA_ROOT_PREFIX` is set, the root prefix will be
+set to `joinpath(DEPOT_PATH[1], "micromamba", "root")`.
+"""
+function cmd()
+    root = get(ENV, "MAMBA_ROOT_PREFIX") do
+        joinpath(DEPOT_PATH[1], "micromamba", "root")
+    end
+    `$(executable()) --root-prefix $root`
+end
+cmd(args) = `$(cmd()) $args`
 
 end # module
