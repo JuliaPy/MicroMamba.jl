@@ -5,7 +5,7 @@ A Julia interface to the [`MicroMamba`](https://mamba.readthedocs.io/en/latest/u
 ## Installation
 
 ```
-pkg> add https://github.com/cjdoris/MicroMamba.jl
+pkg> add MicroMamba
 ```
 
 ## Usage
