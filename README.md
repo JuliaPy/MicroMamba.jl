@@ -16,7 +16,7 @@ The API consists of the following functions:
 - `version()` returns the version of this executable.
 - `available()` returns true if MicroMamba is available on this system. Use this to check if the above functions will succeed.
 
-In all three cases, MicroMamba will be downloaded and installed if required to the `micromamba` directory in your Julia depot (e.g. `~/.julia/micromamba`).
+In all cases, MicroMamba will be downloaded and installed if required to the `micromamba` directory in your Julia depot (e.g. `~/.julia/micromamba`).
 
 ## Example
 
