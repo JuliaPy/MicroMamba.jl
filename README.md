@@ -11,16 +11,20 @@ pkg> add MicroMamba
 ## Usage
 
 The API consists of the following three functions:
+- `available()` returns true if MicroMamba is available on this system. Use this to check if the following functions will succeed.
 - `executable()` returns a path to a MicroMamba executable.
 - `version()` returns the version of the above executable.
-- `available()` returns true if MicroMamba is available on this system.
+- `cmd([args])` returns a command which calls MicroMamba.
 
-In all three cases, MicroMamba will be downloaded and installed (local to the package)
-if required.
+In all three cases, MicroMamba will be downloaded and installed if required to the `micromamba` directory in your Julia depot (e.g. `~/.julia/micromamba`).
 
-Note that `executable()` and `version()` can throw errors, such as if MicroMamba is not
-supported on this platform. The `available()` function exists to check for this: if it
-returns true, then the other functions will succeed.
+## Example
+
+The following example creates a new environment and installs Python into it.
+
+```julia
+run(MicroMamba.cmd(`--prefix ./env create python --yes --channel conda-forge`))
+```
 
 ## Environment variables
 
@@ -32,3 +36,4 @@ The following environment variables customise the behaviour of this package.
   - `{platform}` is replaced with the platform, such as `linux-64`.
   - `{version}` is replaced with the desired version, such as `latest` or `0.19.0`.
 - `JULIA_MICROMAMBA_VERSION`: If MicroMamba needs to be downloaded, this specifies the version.
+- `JULIA_MICROMAMBA_ROOT_PREFIX`: The root prefix used by `cmd()`. Defaults to the `micromamba/root` directory of your Julia depo (e.g. `~/.julia/micromamba/root`).

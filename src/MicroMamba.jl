@@ -159,14 +159,19 @@ end
 
 Construct a command which calls MicroMamba, optionally with additional arguments.
 
-Unless the environment variable `MAMBA_ROOT_PREFIX` is set, the root prefix will be
-set to `joinpath(DEPOT_PATH[1], "micromamba", "root")`.
+By default, the root prefix is a folder in the Julia depot. It can be over-ridden with
+the environment variable `JULIA_MICROMAMBA_ROOT_PREFIX`. To use the default root prefix
+instead (e.g. as set by `~/.mambarc`) set this variable to the empty string.
 """
 function cmd()
-    root = get(ENV, "MAMBA_ROOT_PREFIX") do
+    ans = `$(executable())`
+    root = get(ENV, "JULIA_MICROMAMBA_ROOT_PREFIX") do
         joinpath(DEPOT_PATH[1], "micromamba", "root")
     end
-    `$(executable()) --root-prefix $root`
+    if root != ""
+        ans = `$ans --root-prefix $root`
+    end
+    ans
 end
 cmd(args) = `$(cmd()) $args`
 
