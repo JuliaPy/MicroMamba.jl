@@ -20,7 +20,7 @@ In all cases, MicroMamba will be downloaded and installed if required to the `mi
 
 ## Example
 
-The following example creates a new environment in `./env` and installs Python into it.
+The following command creates a new environment in `./env` and installs Python into it.
 
 ```julia
 run(MicroMamba.cmd(`--prefix ./env create python --yes --channel conda-forge`))
