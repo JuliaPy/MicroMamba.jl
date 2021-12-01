@@ -27,7 +27,7 @@ returns true, then the other functions will succeed.
 The following environment variables customise the behaviour of this package.
 - `JULIA_MICROMAMBA_EXECUTABLE`: If set, it must be the path of a MicroMamba executable to
   use instead of downloading it. It becomes the return value of `executable()`.
-- `JULIA_MICROMAMBA_URL`: The URL to fetch MicroMamba from if it needs to be downloaded.
+- `JULIA_MICROMAMBA_URL`: The URL to download MicroMamba from if required.
   The following string replacements are made:
   - `{platform}` is replaced with the platform, such as `linux-64`.
   - `{version}` is replaced with the desired version, such as `latest` or `0.19.0`.
