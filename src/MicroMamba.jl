@@ -60,6 +60,8 @@ May throw an error, for example if your platform is not supported. See `availabl
 """
 function executable()
     if STATE.executable == ""
+        # Set to true again below, unless any errors are thrown
+        STATE.available = false
         # Find the MicroMamba executable
         fromenv = false
         if haskey(ENV, "JULIA_MICROMAMBA_EXECUTABLE")
@@ -80,7 +82,8 @@ function executable()
                     open(file) do io
                         Tar.extract(Bzip2DecompressorStream(io), odir)
                     end
-                    cp(joinpath(odir, "Library", "bin", exename), exe, force=true)
+                    iexe = Sys.iswindows() ? joinpath(odir, "Library", "bin", exename) : joinpath(odir, "bin", exename)
+                    cp(iexe, exe, force=true)
                 end
             end
             STATE.executable = exe
@@ -97,6 +100,7 @@ function executable()
                 error("MicroMamba at $(STATE.executable) is version $(STATE.version) which is older than the minimum supported version $(MIN_VERSION) of this package")
             end
         end
+        STATE.available = true
     end
     STATE.executable
 end
