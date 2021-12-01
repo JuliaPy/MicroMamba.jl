@@ -28,7 +28,7 @@ The following environment variables customise the behaviour of this package.
 - `JULIA_MICROMAMBA_EXECUTABLE`: If set, it must be the path of a MicroMamba executable to
   use instead of downloading it.
 - `JULIA_MICROMAMBA_URL`: The URL to fetch MicroMamba from if it needs to be downloaded.
-  The string `{platform}` will be replaced with the platform (such as `linux-64`) and
-  `{version}` with the requested version (such as `latest` or `0.19.0`).
-  Default: `https://micro.mamba.pm/api/micromamba/{platform}/{version}`.
-- `JULIA_MICROMAMBA_VERSION`: The version to insert into the URL. Default: `latest`.
+  The following string replacements are made:
+  - `{platform}` is replaced with the platform, such as `linux-64`.
+  - `{version}` is replaced with the desired version, such as `latest` or `0.19.0`.
+- `JULIA_MICROMAMBA_VERSION`: The version to insert into the URL.
