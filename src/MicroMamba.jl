@@ -1,42 +1,43 @@
 module MicroMamba
 
-import Base: @kwdef
 import CodecBzip2: Bzip2DecompressorStream
 import Downloads: download
 import Tar
 
-@kwdef mutable struct State
-    available::Bool = true
-    platform::String = ""
-    url::String = ""
-    executable::String = ""
-    version::VersionNumber = VersionNumber(0)
+mutable struct State
+    available::Bool
+    platform::String
+    url::String
+    executable::String
+    version::VersionNumber
 end
 
-const STATE = State()
+const STATE = State(true, "", "", "", VersionNumber(0))
+
+const DEFAULT_PLATFORM =
+    Sys.ARCH == :x86_64 ?
+        Sys.iswindows() ? "win-64" :
+        Sys.islinux() ? "linux-64" :
+        Sys.isapple() ? "osx-64" : "" :
+    Sys.ARCH == :aarch64 ?
+        Sys.islinux() ? "linux-aarch64" : "" :
+    Sys.ARCH == :powerpc64le ?
+        Sys.islinux() ? "linux-ppc64le" : "" : ""
 
 function platform()
     if STATE.platform == ""
-        arch = Sys.ARCH
-        STATE.platform =
-            arch == :x86_64 ?
-                Sys.iswindows() ? "win-64" :
-                Sys.islinux() ? "linux-64" :
-                Sys.isapple() ? "osx-64" :
-                error("unsupported platform") :
-            arch == :aarch64 ?
-                Sys.islinux() ? "linux-64" :
-                error("unsupported platform") :
-            arch == :powerpc64le ?
-                Sys.islinux() ? "powerpc64le" :
-                error("unsupported platform") :
-            error("unsupported platform")
+        if DEFAULT_PLATFORM == ""
+            error("MicroMamba does not support your platform")
+        else
+            STATE.platform = DEFAULT_PLATFORM
+        end
     end
     STATE.platform
 end
 
 const DEFAULT_URL = "https://micro.mamba.pm/api/micromamba/{platform}/{version}"
-const MIN_VERSION = v"0.19.0"
+
+const MIN_VERSION = v"0.19.1"
 
 function url()
     if STATE.url == ""
@@ -93,7 +94,6 @@ function executable()
         STATE.version = _version(STATE.executable)
         if STATE.version == VersionNumber(0)
             # Zero means the version could not be determined
-            STATE.available = false
             error("$(STATE.executable) does not seem to be a MicroMamba executable")
         elseif STATE.version < MIN_VERSION
             # Too low, raise an error unless the user explicitly specified the executable or version
@@ -169,7 +169,7 @@ function cmd()
         joinpath(DEPOT_PATH[1], "micromamba", "root")
     end
     if root != ""
-        ans = `$ans --root-prefix $root`
+        ans = `$ans -r $root`
     end
     ans
 end
