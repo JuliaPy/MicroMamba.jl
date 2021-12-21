@@ -2,6 +2,8 @@
 
 A Julia interface to the [`MicroMamba`](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html) package manager.
 
+For a higher-level interface, see [`CondaPkg.jl`](https://github.com/cjdoris/CondaPkg.jl).
+
 ## Installation
 
 ```
