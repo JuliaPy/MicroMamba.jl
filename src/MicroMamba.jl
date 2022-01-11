@@ -7,9 +7,12 @@ end
 
 import CodecBzip2: Bzip2DecompressorStream
 import Downloads: download
+import Scratch: @get_scratch!
 import Tar
 
 mutable struct State
+    install_dir::String
+    root_dir::String
     available::Bool
     platform::String
     url::String
@@ -17,7 +20,7 @@ mutable struct State
     version::VersionNumber
 end
 
-const STATE = State(true, "", "", "", VersionNumber(0))
+const STATE = State("", "", true, "", "", "", VersionNumber(0))
 
 const DEFAULT_PLATFORM =
     Sys.ARCH == :x86_64 ?
@@ -43,6 +46,22 @@ end
 const DEFAULT_URL = "https://micro.mamba.pm/api/micromamba/{platform}/{version}"
 
 const MIN_VERSION = v"0.19.1"
+
+function install_dir()
+    if STATE.install_dir == ""
+        STATE.install_dir = @get_scratch!("install")
+    end
+    return STATE.install_dir
+end
+
+function root_dir()
+    get(ENV, "JULIA_MICROMAMBA_ROOT_PREFIX") do
+        if STATE.root_dir == ""
+            STATE.root_dir = @get_scratch!("root")
+        end
+        STATE.root_dir
+    end
+end
 
 function url()
     if STATE.url == ""
@@ -76,7 +95,7 @@ function executable()
         else
             # Use version installed in the package dir
             exename = Sys.iswindows() ? "micromamba.exe" : "micromamba"
-            exe = joinpath(DEPOT_PATH[1], "micromamba", exename)
+            exe = joinpath(install_dir(), exename)
             if _version(exe) < MIN_VERSION
                 # If doesn't exist or too old, download and install
                 mktempdir() do dir
@@ -107,6 +126,11 @@ function executable()
             end
         end
         STATE.available = true
+        # Check if the an old MicroMamba directory is still there (~/.julia/micromamba)
+        for depotdir in DEPOT_PATH
+            olddir = joinpath(depotdir, "micromamba")
+            isdir(olddir) && @warn "Old MicroMamba directory still exists, it can be deleted: $olddir"
+        end
     end
     STATE.executable
 end
@@ -170,9 +194,7 @@ instead (e.g. as set by `~/.mambarc`) set this variable to the empty string.
 """
 function cmd()
     ans = `$(executable())`
-    root = get(ENV, "JULIA_MICROMAMBA_ROOT_PREFIX") do
-        joinpath(DEPOT_PATH[1], "micromamba", "root")
-    end
+    root = root_dir()
     if root != ""
         ans = `$ans -r $root`
     end
