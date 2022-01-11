@@ -1,5 +1,10 @@
 module MicroMamba
 
+if isdefined(Base, :Experimental) && isdefined(Base.Experimental, Symbol("@compiler_options"))
+    # Note: compile=min makes --code-coverage not work
+    @eval Base.Experimental.@compiler_options optimize=0 infer=false #compile=min
+end
+
 import CodecBzip2: Bzip2DecompressorStream
 import Downloads: download
 import Tar
