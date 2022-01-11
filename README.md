@@ -1,4 +1,7 @@
 # MicroMamba.jl
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Test Status](https://github.com/cjdoris/MicroMamba.jl/actions/workflows/tests.yml/badge.svg)](https://github.com/cjdoris/MicroMamba.jl/actions/workflows/tests.yml)
+[![Codecov](https://codecov.io/gh/cjdoris/MicroMamba.jl/branch/main/graph/badge.svg?token=PshN9qAKau)](https://codecov.io/gh/cjdoris/MicroMamba.jl)
 
 A Julia interface to the [`MicroMamba`](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html) package manager.
 
