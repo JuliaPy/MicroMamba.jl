@@ -21,7 +21,7 @@ The API consists of the following functions:
 - `version()` returns the version of this executable.
 - `available()` returns true if MicroMamba is available on this system. Use this to check if the above functions will succeed.
 
-In all cases, MicroMamba will be downloaded and installed if required to the `micromamba` directory in your Julia depot (e.g. `~/.julia/micromamba`).
+In all cases, MicroMamba will be downloaded and installed if required to a Julia-specific location.
 
 ## Example
 
@@ -41,4 +41,4 @@ The following environment variables customise the behaviour of this package.
   - `{platform}` is replaced with the platform, such as `linux-64`.
   - `{version}` is replaced with the desired version, such as `latest` or `0.19.0`.
 - `JULIA_MICROMAMBA_VERSION`: If MicroMamba needs to be downloaded, this specifies the version.
-- `JULIA_MICROMAMBA_ROOT_PREFIX`: The root prefix used by `cmd()`. Defaults to the `micromamba/root` directory of your Julia depot (e.g. `~/.julia/micromamba/root`).
+- `JULIA_MICROMAMBA_ROOT_PREFIX`: The root prefix used by `cmd()`.
