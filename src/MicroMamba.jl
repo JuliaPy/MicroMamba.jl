@@ -75,7 +75,7 @@ function url()
 end
 
 function _log(io::IO, args...)
-    printstyled(io, "  MicroMamba ", color=:light_green, bold=true)
+    printstyled(io, "  MicroMamba ", color=:green, bold=true)
     println(io, args...)
     flush(io)
 end
