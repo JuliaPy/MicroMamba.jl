@@ -77,6 +77,7 @@ end
 function _log(io::IO, args...)
     printstyled(io, "  MicroMamba ", color=:light_green, bold=true)
     println(io, args...)
+    flush(io)
 end
 
 """
@@ -205,6 +206,6 @@ function cmd(; io::IO=stdout)
     end
     ans
 end
-cmd(args) = `$(cmd()) $args`
+cmd(args; io::IO=stdout) = `$(cmd(io=io)) $args`
 
 end # module
