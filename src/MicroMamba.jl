@@ -74,6 +74,11 @@ function url()
     STATE.url
 end
 
+function _log(io::IO, args...)
+    printstyled(io, "  MicroMamba ", color=:light_green, bold=true)
+    println(io, args...)
+end
+
 """
     executable()
 
@@ -83,7 +88,7 @@ Will download and install MicroMamba if required.
 
 May throw an error, for example if your platform is not supported. See `available()`.
 """
-function executable()
+function executable(; io::IO=stdout)
     if STATE.executable == ""
         # Set to true again below, unless any errors are thrown
         STATE.available = false
@@ -100,9 +105,9 @@ function executable()
                 # If doesn't exist or too old, download and install
                 mktempdir() do dir
                     file = joinpath(dir, "micromamba.tar.bz2")
-                    @info "Downloading MicroMamba from $(url())"
+                    _log(io, "Downloading: $(url())")
                     download(url(), file)
-                    @info "Installing MicroMamba to $exe"
+                    _log(io, "Installing: $exe")
                     odir = joinpath(dir, "micromamba")
                     open(file) do io
                         Tar.extract(Bzip2DecompressorStream(io), odir)
@@ -158,8 +163,8 @@ Will download and install MicroMamba if required.
 
 May throw an error, for example if your platform is not supported. See `available()`.
 """
-function version()
-    executable()
+function version(; io::IO=stdout)
+    executable(io=io)
     STATE.version
 end
 
@@ -172,10 +177,10 @@ If so, `executable()` and `version()` will not throw.
 
 Will download and install MicroMamba if required.
 """
-function available()
+function available(; io::IO=stdout)
     if STATE.available && STATE.executable == ""
         try
-            executable()
+            executable(io=io)
         catch
             STATE.available = false
         end
@@ -192,8 +197,8 @@ By default, the root prefix is a folder in the Julia depot. It can be over-ridde
 the environment variable `JULIA_MICROMAMBA_ROOT_PREFIX`. To use the default root prefix
 instead (e.g. as set by `~/.mambarc`) set this variable to the empty string.
 """
-function cmd()
-    ans = `$(executable())`
+function cmd(; io::IO=stdout)
+    ans = `$(executable(io=io))`
     root = root_dir()
     if root != ""
         ans = `$ans -r $root`
