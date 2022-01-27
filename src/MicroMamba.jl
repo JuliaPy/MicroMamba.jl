@@ -47,7 +47,7 @@ function executable(; io::IO=stderr)
         STATE.executable = exe
         STATE.version = DEFAULT_VERSION
         STATE.available = true
-        # Check if the an old MicroMamba directory is still there (~/.julia/micromamba)
+        # Check if an old MicroMamba directory is still there (~/.julia/micromamba)
         for depotdir in DEPOT_PATH
             olddir = joinpath(depotdir, "micromamba")
             isdir(olddir) && @warn "Old MicroMamba directory still exists, it can be deleted: $olddir"
