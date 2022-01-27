@@ -86,7 +86,6 @@ function available(; io::IO=stderr)
         try
             executable(io=io)
         catch
-            STATE.available = false
         end
     end
     STATE.available
@@ -113,11 +112,7 @@ the environment variable `JULIA_MICROMAMBA_ROOT_PREFIX`.
 function cmd(; io::IO=stderr)
     exe = executable(io=io)
     root = root_dir()
-    if root == ""
-        `$exe`
-    else
-        `$exe -r $root`
-    end
+    `$exe -r $root`
 end
 cmd(args; io::IO=stderr) = `$(cmd(io=io)) $args`
 
