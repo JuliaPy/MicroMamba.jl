@@ -113,3 +113,61 @@ os = "windows"
     [["micromamba-0.19.1".download]]
     sha256 = "ceed677da55993e0d8173f16cb1a36085b2711491843b7ae849da3426c19e09e"
     url = "https://micro.mamba.pm/api/micromamba/win-64/0.19.1"
+
+[["micromamba-0.20.0"]]
+arch = "x86_64"
+git-tree-sha1 = "fa62c28fc158be3411abc494b66aa4ae9d19a314"
+lazy = true
+libc = "glibc"
+os = "linux"
+
+    [["micromamba-0.20.0".download]]
+    sha256 = "4c666210cb885565f1345febdc9e7230a970c4915f5d99b9a47a88e6e5de7f04"
+    url = "https://micro.mamba.pm/api/micromamba/linux-64/0.20.0"
+[["micromamba-0.20.0"]]
+arch = "aarch64"
+git-tree-sha1 = "d0034ac6d9f1515589e6dc3b69f2e642ca0c2119"
+lazy = true
+libc = "glibc"
+os = "linux"
+
+    [["micromamba-0.20.0".download]]
+    sha256 = "30dd4410e8b088b9ae83287be1521bbd151fa27f5ef0eab71cf2a028120a0241"
+    url = "https://micro.mamba.pm/api/micromamba/linux-aarch64/0.20.0"
+[["micromamba-0.20.0"]]
+arch = "powerpc64le"
+git-tree-sha1 = "2fd0ae7715cb8a4c30d7ebe82eb0533fe547fb0e"
+lazy = true
+libc = "glibc"
+os = "linux"
+
+    [["micromamba-0.20.0".download]]
+    sha256 = "09b25a907d1659cb6c8c337530108ffe9ddadce3d6b3f69e58c939e948cc4f7c"
+    url = "https://micro.mamba.pm/api/micromamba/linux-ppc64le/0.20.0"
+[["micromamba-0.20.0"]]
+arch = "x86_64"
+git-tree-sha1 = "b4899b086afaa4b4d2126ff7fdb8fb6ddb04460a"
+lazy = true
+os = "macos"
+
+    [["micromamba-0.20.0".download]]
+    sha256 = "7cc73c54ee3185803931fd320e0daa147926bc2c8ef5423f88990adb10dd7f93"
+    url = "https://micro.mamba.pm/api/micromamba/osx-64/0.20.0"
+[["micromamba-0.20.0"]]
+arch = "aarch64"
+git-tree-sha1 = "a639b7e68d05b3e15cef347a3e0a9b568c289531"
+lazy = true
+os = "macos"
+
+    [["micromamba-0.20.0".download]]
+    sha256 = "c949dfd8acdc2d4f2ac80e25dc9f66cdf81e2fd68d0ab537f8e732d57825bc6f"
+    url = "https://micro.mamba.pm/api/micromamba/osx-arm64/0.20.0"
+[["micromamba-0.20.0"]]
+arch = "x86_64"
+git-tree-sha1 = "3bf4737d7532f44002334c8622023cfefd9da4e6"
+lazy = true
+os = "windows"
+
+    [["micromamba-0.20.0".download]]
+    sha256 = "7739851af181f5c385c9c5314b239d18572a69038fc489ae03417418527874db"
+    url = "https://micro.mamba.pm/api/micromamba/win-64/0.20.0"

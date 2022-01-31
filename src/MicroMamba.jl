@@ -17,7 +17,7 @@ end
 
 const STATE = State("", true, "", VersionNumber(0))
 
-const DEFAULT_VERSION = v"0.19.1"
+const DEFAULT_VERSION = v"0.20.0"
 const ARTIFACTS_TOML = joinpath(dirname(@__DIR__), "Artifacts.toml")
 const ARTIFACT_NAME = "micromamba-$(DEFAULT_VERSION)"
 
@@ -42,7 +42,8 @@ function executable(; io::IO=stderr)
         end
         # check the executable is executable and the right version
         versionstr = read(`$exe --version`, String)
-        @assert occursin("micromamba: $(DEFAULT_VERSION)", versionstr)
+        # @assert occursin("micromamba: $(DEFAULT_VERSION)", versionstr)
+        @assert strip(versionstr) == string(DEFAULT_VERSION)
         # update the state
         STATE.executable = exe
         STATE.version = DEFAULT_VERSION
