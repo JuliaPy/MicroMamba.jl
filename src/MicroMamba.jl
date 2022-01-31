@@ -93,7 +93,8 @@ end
 
 function root_dir()
     if STATE.root_dir == ""
-        STATE.root_dir = get(ENV, "JULIA_MICROMAMBA_ROOT_PREFIX", "")
+        # if the user already has mamba installed, re-use its root
+        STATE.root_dir = get(ENV, "MAMBA_ROOT_PREFIX", "")
         if STATE.root_dir == ""
             STATE.root_dir = @get_scratch!("root")
         end
@@ -107,7 +108,7 @@ end
 Construct a command which calls MicroMamba, optionally with additional arguments.
 
 By default, the root prefix is a folder in the Julia depot. It can be over-ridden with
-the environment variable `JULIA_MICROMAMBA_ROOT_PREFIX`.
+the environment variable `MAMBA_ROOT_PREFIX`.
 """
 function cmd(; io::IO=stderr)
     exe = executable(io=io)

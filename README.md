@@ -23,6 +23,8 @@ The API consists of the following functions:
 
 In all cases, MicroMamba will be downloaded and installed if required to a Julia-specific location.
 
+The command returned from `cmd()` includes the root prefix `-r` argument. By default this is some Julia-specific directory, but can be over-ridden with the environment variable `MAMBA_ROOT_PREFIX`.
+
 ## Example
 
 The following command creates a new environment in `./env` and installs Python into it.
@@ -30,8 +32,3 @@ The following command creates a new environment in `./env` and installs Python i
 ```julia
 run(MicroMamba.cmd(`create -y -p ./env python -c conda-forge`))
 ```
-
-## Environment variables
-
-The following environment variables customise the behaviour of this package.
-- `JULIA_MICROMAMBA_ROOT_PREFIX`: The root prefix used by `cmd()`.
