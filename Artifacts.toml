@@ -288,60 +288,60 @@ os = "windows"
     sha256 = "49a22ab05dee3ab7dc44b6eeb2515c763d598642739ed4e8421163426a6c5cac"
     url = "https://micro.mamba.pm/api/micromamba/win-64/0.22.0"
 
-[["micromamba-0.23.0"]]
+[["micromamba-0.23.3"]]
 arch = "x86_64"
-git-tree-sha1 = "3f6c28eeed58c0fb8c61e2f1f0fecc8bf197e256"
+git-tree-sha1 = "2aa486aaa049e5d1d0c0cdf1646b2249ed1bfc8b"
 lazy = true
 libc = "glibc"
 os = "linux"
 
-    [["micromamba-0.23.0".download]]
-    sha256 = "20f7049bd07087e0327c98bf4bde3243bb011a7d3be3ed4c18acb99152e246ab"
-    url = "https://micro.mamba.pm/api/micromamba/linux-64/0.23.0"
-[["micromamba-0.23.0"]]
+    [["micromamba-0.23.3".download]]
+    sha256 = "9885d6755fbf0ca4ef459e1eaa58197c74ac6d6424fdd50b82db156008edd88f"
+    url = "https://micro.mamba.pm/api/micromamba/linux-64/0.23.3"
+[["micromamba-0.23.3"]]
 arch = "aarch64"
-git-tree-sha1 = "650da19eac614fbda6921e0ececa3ed064000a52"
+git-tree-sha1 = "a6b757542fe1b18b68b36ba71024eaf162ffff30"
 lazy = true
 libc = "glibc"
 os = "linux"
 
-    [["micromamba-0.23.0".download]]
-    sha256 = "d00828e00f4160103488b60c8a9378f23df62953e3d2647669bfc2ee9e6c6e13"
-    url = "https://micro.mamba.pm/api/micromamba/linux-aarch64/0.23.0"
-[["micromamba-0.23.0"]]
+    [["micromamba-0.23.3".download]]
+    sha256 = "8c3ffc419eba71274d99e056bf7f5c3a43a0dbc2be9fc61e8ba65c3fddf498ab"
+    url = "https://micro.mamba.pm/api/micromamba/linux-aarch64/0.23.3"
+[["micromamba-0.23.3"]]
 arch = "powerpc64le"
-git-tree-sha1 = "42768633f730324a81d1aa477cccd4d949b63c4b"
+git-tree-sha1 = "1583618a0a755336293c75c5b54310f18becaec2"
 lazy = true
 libc = "glibc"
 os = "linux"
 
-    [["micromamba-0.23.0".download]]
-    sha256 = "2836d468c7ec96022043eda01d7f037ca23b4e0b29c4f68c9078be95acb857f2"
-    url = "https://micro.mamba.pm/api/micromamba/linux-ppc64le/0.23.0"
-[["micromamba-0.23.0"]]
+    [["micromamba-0.23.3".download]]
+    sha256 = "b9e5f698202a34a9510c344e957511145d382be337eb30490a304432f1256644"
+    url = "https://micro.mamba.pm/api/micromamba/linux-ppc64le/0.23.3"
+[["micromamba-0.23.3"]]
 arch = "x86_64"
-git-tree-sha1 = "2f2c3ca4c13ed18bd4eb0c25ab6208de2c913254"
+git-tree-sha1 = "81cb7f140c1d54937d3677ff937c98fe54c67981"
 lazy = true
 os = "macos"
 
-    [["micromamba-0.23.0".download]]
-    sha256 = "9d374e4693bc409f32c06a1c8a89506994d6cd74bfb8d499781c542b6ebda6e5"
-    url = "https://micro.mamba.pm/api/micromamba/osx-64/0.23.0"
-[["micromamba-0.23.0"]]
+    [["micromamba-0.23.3".download]]
+    sha256 = "2366355e73b50485251510ba59fdbefb3593ad011aff4b4cb22ce49adbfc2e8c"
+    url = "https://micro.mamba.pm/api/micromamba/osx-64/0.23.3"
+[["micromamba-0.23.3"]]
 arch = "aarch64"
-git-tree-sha1 = "2fb7b415866a030ad1921c614fc8d9dc98926b53"
+git-tree-sha1 = "3c7cae28f5fe1b6d602aa0bbb6b255b3735b8f24"
 lazy = true
 os = "macos"
 
-    [["micromamba-0.23.0".download]]
-    sha256 = "d41de3796bea111e3eaa4e8904c4352003b5eaa7d61d97dc21bf917c70e35fd4"
-    url = "https://micro.mamba.pm/api/micromamba/osx-arm64/0.23.0"
-[["micromamba-0.23.0"]]
+    [["micromamba-0.23.3".download]]
+    sha256 = "af93f15b0bcf99842f69bde185abb7b1bbcda6246ab2a41a20b8f32b6797fa12"
+    url = "https://micro.mamba.pm/api/micromamba/osx-arm64/0.23.3"
+[["micromamba-0.23.3"]]
 arch = "x86_64"
-git-tree-sha1 = "1f52c05fe1498344f2a7159ea6e805845215c424"
+git-tree-sha1 = "2f3f2732e7f0a32edb0d7225da3623a5d44d511b"
 lazy = true
 os = "windows"
 
-    [["micromamba-0.23.0".download]]
-    sha256 = "063815c2b494112c09d82f8cf3911be2ec9b72f5e475ad56baec37e80288f019"
-    url = "https://micro.mamba.pm/api/micromamba/win-64/0.23.0"
+    [["micromamba-0.23.3".download]]
+    sha256 = "d133dc61615b03fa953b6563c6d0f7362c5319c1ed164a4c1311b7f5e1868776"
+    url = "https://micro.mamba.pm/api/micromamba/win-64/0.23.3"
