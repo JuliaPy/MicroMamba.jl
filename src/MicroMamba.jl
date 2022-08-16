@@ -17,7 +17,7 @@ end
 
 const STATE = State("", true, "", VersionNumber(0))
 
-const DEFAULT_VERSION = v"0.24.0"
+const DEFAULT_VERSION = v"0.25.1"
 const ARTIFACTS_TOML = joinpath(dirname(@__DIR__), "Artifacts.toml")
 const ARTIFACT_NAME = "micromamba-$(DEFAULT_VERSION)"
 

@@ -12,7 +12,7 @@ import ArtifactUtils: add_artifact!
 import Pkg.Artifacts: Platform
 
 toml = "Artifacts.toml"
-version = "0.24.0"
+version = "0.25.1"
 name = "micromamba-$(version)"
 platforms = [
     "linux-64" => Platform("x86_64", "linux"),
