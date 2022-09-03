@@ -7,6 +7,7 @@ end
 
 import Pkg.Artifacts: ensure_artifact_installed
 import Scratch: @get_scratch!
+import micromamba_jll
 
 mutable struct State
     root_dir::String
@@ -16,10 +17,6 @@ mutable struct State
 end
 
 const STATE = State("", true, "", VersionNumber(0))
-
-const DEFAULT_VERSION = v"0.25.1"
-const ARTIFACTS_TOML = joinpath(dirname(@__DIR__), "Artifacts.toml")
-const ARTIFACT_NAME = "micromamba-$(DEFAULT_VERSION)"
 
 """
     executable()
@@ -32,21 +29,14 @@ May throw an error, for example if your platform is not supported. See `availabl
 """
 function executable(; io::IO=stderr)
     if STATE.executable == ""
-        # install from artifact
-        STATE.available = false
-        install_dir = ensure_artifact_installed(ARTIFACT_NAME, ARTIFACTS_TOML, io=io)
-        if Sys.iswindows()
-            exe = joinpath(install_dir, "Library", "bin", "micromamba.exe")
-        else
-            exe = joinpath(install_dir, "bin", "micromamba")
+        if !micromamba_jll.is_available()
+            STATE.available = false
+            error("MicroMamba is not currently supported on your platform")
         end
-        # check the executable is executable and the right version
-        versionstr = read(`$exe --version`, String)
-        # @assert occursin("micromamba: $(DEFAULT_VERSION)", versionstr)
-        @assert strip(versionstr) == string(DEFAULT_VERSION)
-        # update the state
+        exe = micromamba_jll.get_micromamba_path()
+        ver = VersionNumber(chomp(read(`$exe --version`, String)))
         STATE.executable = exe
-        STATE.version = DEFAULT_VERSION
+        STATE.version = ver
         STATE.available = true
         # Check if an old MicroMamba directory is still there (~/.julia/micromamba)
         for depotdir in DEPOT_PATH

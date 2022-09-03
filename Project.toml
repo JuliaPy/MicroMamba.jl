@@ -6,10 +6,12 @@ version = "0.1.9"
 [deps]
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Scratch = "6c6a2e73-6563-6170-7368-637461726353"
+micromamba_jll = "f8abcde7-e9b7-5caa-b8af-a437887ae8e4"
 
 [compat]
 Scratch = "1.1"
 julia = "1.6"
+micromamba_jll = "0.25.1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
