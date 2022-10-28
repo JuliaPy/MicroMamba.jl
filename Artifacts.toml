@@ -406,13 +406,13 @@ os = "windows"
 
 [["micromamba-0.27.0"]]
 arch = "x86_64"
-git-tree-sha1 = "d45b66605cad8bca223a3eb103eebb71adcf1415"
+git-tree-sha1 = "f7f4588f4cdb2a84682d91f52ffe5eb98242a4cb"
 lazy = true
 libc = "glibc"
 os = "linux"
 
     [["micromamba-0.27.0".download]]
-    sha256 = "4adbf3091a4159af2c48264a8e32ecb98147b0e3f200601f384f8f53a6910ca2"
+    sha256 = "1b1bdd0798c3c57eda3c76660ed148a59d70e555c6dcd3c099e824bf78873d70"
     url = "https://micro.mamba.pm/api/micromamba/linux-64/0.27.0"
 [["micromamba-0.27.0"]]
 arch = "aarch64"
