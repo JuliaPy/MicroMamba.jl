@@ -17,7 +17,7 @@ end
 
 const STATE = State("", true, "", VersionNumber(0))
 
-const DEFAULT_VERSION = v"0.27.0"
+const DEFAULT_VERSION = tryparse(VersionNumber, get(ENV, "JULIA_MICROMAMBA_VERSION", "0.27.0")) 
 const ARTIFACTS_TOML = joinpath(dirname(@__DIR__), "Artifacts.toml")
 const ARTIFACT_NAME = "micromamba-$(DEFAULT_VERSION)"
 
