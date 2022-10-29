@@ -433,7 +433,7 @@ os = "linux"
 
     [["micromamba-0.27.0".download]]
     sha256 = "4ac42f04358bed1d5dadd42d456c387525ef8f6444c966ff73e29b54c8aba92f"
-    url = "https://conda.anaconda.org/conda-forge/linux-ppc641e/micromamba-0.27.0-0.tar.bz2"
+    url = "https://conda.anaconda.org/conda-forge/linux-ppc64le/micromamba-0.27.0-0.tar.bz2"
 [["micromamba-0.27.0"]]
 arch = "x86_64"
 git-tree-sha1 = "686c3794fb6b2ee7b336efd596ec1b9fa0c4f8c4"
