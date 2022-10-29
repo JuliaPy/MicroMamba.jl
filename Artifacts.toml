@@ -406,14 +406,14 @@ os = "windows"
 
 [["micromamba-0.27.0"]]
 arch = "x86_64"
-git-tree-sha1 = "f7f4588f4cdb2a84682d91f52ffe5eb98242a4cb"
+git-tree-sha1 = "d45b66605cad8bca223a3eb103eebb71adcf1415"
 lazy = true
 libc = "glibc"
 os = "linux"
 
     [["micromamba-0.27.0".download]]
-    sha256 = "1b1bdd0798c3c57eda3c76660ed148a59d70e555c6dcd3c099e824bf78873d70"
-    url = "https://micro.mamba.pm/api/micromamba/linux-64/0.27.0"
+    sha256 = "4adbf3091a4159af2c48264a8e32ecb98147b0e3f200601f384f8f53a6910ca2"
+    url = "https://conda.anaconda.org/conda-forge/linux-64/micromamba-0.27.0-0.tar.bz2"
 [["micromamba-0.27.0"]]
 arch = "aarch64"
 git-tree-sha1 = "7c54cbd9bba6f6704199d93464f5ade892203395"
@@ -423,7 +423,7 @@ os = "linux"
 
     [["micromamba-0.27.0".download]]
     sha256 = "f343ffaa2a017b4beb9a8eafdaf8ebbef112b6a19df2ea5028a137181bf9f781"
-    url = "https://micro.mamba.pm/api/micromamba/linux-aarch64/0.27.0"
+    url = "https://conda.anaconda.org/conda-forge/linux-aarch64/micromamba-0.27.0-0.tar.bz2"
 [["micromamba-0.27.0"]]
 arch = "powerpc64le"
 git-tree-sha1 = "51e28e7453208884106808974ac37a98598d0205"
@@ -433,7 +433,7 @@ os = "linux"
 
     [["micromamba-0.27.0".download]]
     sha256 = "4ac42f04358bed1d5dadd42d456c387525ef8f6444c966ff73e29b54c8aba92f"
-    url = "https://micro.mamba.pm/api/micromamba/linux-ppc64le/0.27.0"
+    url = "https://conda.anaconda.org/conda-forge/linux-ppc641e/micromamba-0.27.0-0.tar.bz2"
 [["micromamba-0.27.0"]]
 arch = "x86_64"
 git-tree-sha1 = "686c3794fb6b2ee7b336efd596ec1b9fa0c4f8c4"
@@ -442,7 +442,7 @@ os = "macos"
 
     [["micromamba-0.27.0".download]]
     sha256 = "3c1a5ebb151668ce683fb74073bce5e01740663d5917769adb6d2703441b4531"
-    url = "https://micro.mamba.pm/api/micromamba/osx-64/0.27.0"
+    url = "https://conda.anaconda.org/conda-forge/osx-64/micromamba-0.27.0-0.tar.bz2"
 [["micromamba-0.27.0"]]
 arch = "aarch64"
 git-tree-sha1 = "99483f3180547971c06cbd7a0e20bfeb3b0e4890"
@@ -451,7 +451,7 @@ os = "macos"
 
     [["micromamba-0.27.0".download]]
     sha256 = "4514ca08786692a7b4619fa7c215830e5b6cc6b7077b1c463f4a54b5c82b04e4"
-    url = "https://micro.mamba.pm/api/micromamba/osx-arm64/0.27.0"
+    url = "https://conda.anaconda.org/conda-forge/osx-arm64/micromamba-0.27.0-0.tar.bz2"
 [["micromamba-0.27.0"]]
 arch = "x86_64"
 git-tree-sha1 = "2d85364aeaa4db0c181c16bc8b7a893d8406c343"
@@ -460,4 +460,4 @@ os = "windows"
 
     [["micromamba-0.27.0".download]]
     sha256 = "358de7998dc768d3db44f1ac0791a39c73c068920fa618849633ec183f2ab380"
-    url = "https://micro.mamba.pm/api/micromamba/win-64/0.27.0"
+    url = "https://conda.anaconda.org/conda-forge/win-64/micromamba-0.27.0-0.tar.bz2"
