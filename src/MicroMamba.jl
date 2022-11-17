@@ -5,19 +5,16 @@ if isdefined(Base, :Experimental) && isdefined(Base.Experimental, Symbol("@compi
     @eval Base.Experimental.@compiler_options optimize=0 infer=false #compile=min
 end
 
-import Pkg.Artifacts: ensure_artifact_installed
-import Scratch: @get_scratch!
-import micromamba_jll
+using Scratch: @get_scratch!
+using micromamba_jll: micromamba_jll
 
 mutable struct State
     root_dir::String
-    available::Bool
     executable::String
     version::VersionNumber
 end
 
-const STATE = State("", true, "", VersionNumber(0))
-
+const STATE = State("", "", VersionNumber(0))
 """
     executable()
 
@@ -29,20 +26,10 @@ May throw an error, for example if your platform is not supported. See `availabl
 """
 function executable(; io::IO=stderr)
     if STATE.executable == ""
-        if !micromamba_jll.is_available()
-            STATE.available = false
+        if !available()
             error("MicroMamba is not currently supported on your platform")
         end
-        exe = micromamba_jll.get_micromamba_path()
-        ver = VersionNumber(chomp(read(`$exe --version`, String)))
-        STATE.executable = exe
-        STATE.version = ver
-        STATE.available = true
-        # Check if an old MicroMamba directory is still there (~/.julia/micromamba)
-        for depotdir in DEPOT_PATH
-            olddir = joinpath(depotdir, "micromamba")
-            isdir(olddir) && @warn "Old MicroMamba directory still exists, it can be deleted: $olddir"
-        end
+        STATE.executable = micromamba_jll.get_micromamba_path()
     end
     STATE.executable
 end
@@ -58,7 +45,9 @@ May throw an error, for example if your platform is not supported. See `availabl
 """
 function version(; io::IO=stderr)
     if STATE.version == VersionNumber(0)
-        executable(io=io)
+        exe = executable(io=io)
+        ver = VersionNumber(chomp(read(`$exe --version`, String)))
+        STATE.version = ver
     end
     STATE.version
 end
@@ -73,13 +62,7 @@ If so, `executable()` and `version()` will not throw.
 Will download and install MicroMamba if required.
 """
 function available(; io::IO=stderr)
-    if STATE.available && STATE.executable == ""
-        try
-            executable(io=io)
-        catch
-        end
-    end
-    STATE.available
+    return micromamba_jll.is_available()
 end
 
 function root_dir()
