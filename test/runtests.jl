@@ -1,7 +1,8 @@
-using MicroMamba
-using Test
+using TestItemRunner
 
-@testset "MicroMamba" begin
+@run_package_tests
+
+@testitem "MicroMamba" begin
     @test MicroMamba.available()
     @test isfile(MicroMamba.executable())
     MicroMamba.STATE.version = VersionNumber(0)
