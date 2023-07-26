@@ -12,4 +12,6 @@ using TestItemRunner
     @test MicroMamba.version() > VersionNumber(0)
     help = read(MicroMamba.cmd(`--help`), String)
     @test occursin("--help", help)
+    # this fails on v1.4.3, succeeds on 1.4.7
+    run(MicroMamba.cmd(`create -y -p ./testenv -c conda-forge pip`))
 end
