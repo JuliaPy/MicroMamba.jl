@@ -11,7 +11,7 @@ micromamba_jll = "f8abcde7-e9b7-5caa-b8af-a437887ae8e4"
 [compat]
 Scratch = "1.1"
 julia = "1.6"
-micromamba_jll = "0.26, 1 - 1.4.2, 1.4.7"
+micromamba_jll = "0.26, 1 - 1.4.2, 1.4.7, 2"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
