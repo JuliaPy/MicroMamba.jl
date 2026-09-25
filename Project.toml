@@ -9,6 +9,7 @@ Scratch = "6c6a2e73-6563-6170-7368-637461726353"
 micromamba_jll = "f8abcde7-e9b7-5caa-b8af-a437887ae8e4"
 
 [compat]
+Pkg = "1.10"
 Scratch = "1.1"
 julia = "1.10"
 micromamba_jll = "0.26, 1 - 1.4.2, 1.4.7, 2"
